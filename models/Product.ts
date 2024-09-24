@@ -1,14 +1,15 @@
 import { DataTypes, Model } from 'sequelize';
 import sequelize from '../config/database';
 
-class User extends Model {
+class Product extends Model {
   public id!: number;
   public name!: string;
-  public email!: string;
-  public password!: string;
+  public description!: string;
+  public price!: number;
+  public stock!: number;
 }
 
-User.init(
+Product.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -19,21 +20,23 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
+    description: {
+      type: DataTypes.TEXT,
     },
-    password: {
-      type: DataTypes.STRING,
+    price: {
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: false,
+    },
+    stock: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
   },
   {
     sequelize,
-    modelName: 'User',
+    modelName: 'Product',
     timestamps: true,
   }
 );
 
-export default User;
+export default Product;

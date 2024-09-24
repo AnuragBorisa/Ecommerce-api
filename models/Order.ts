@@ -1,39 +1,39 @@
 import { DataTypes, Model } from 'sequelize';
 import sequelize from '../config/database';
 
-class User extends Model {
+class Order extends Model {
   public id!: number;
-  public name!: string;
-  public email!: string;
-  public password!: string;
+  public UserId!: number;
+  public totalAmount!: number;
+  public orderDate!: Date;
 }
 
-User.init(
+Order.init(
   {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
     },
-    name: {
-      type: DataTypes.STRING,
+    UserId: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
-    email: {
-      type: DataTypes.STRING,
+    totalAmount: {
+      type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
-      unique: true,
     },
-    password: {
-      type: DataTypes.STRING,
+    orderDate: {
+      type: DataTypes.DATE,
       allowNull: false,
+      defaultValue: DataTypes.NOW,
     },
   },
   {
     sequelize,
-    modelName: 'User',
+    modelName: 'Order',
     timestamps: true,
   }
 );
 
-export default User;
+export default Order;
