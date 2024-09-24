@@ -1,11 +1,23 @@
-import { DataTypes, Model } from 'sequelize';
+import { DataTypes, Model, Optional } from 'sequelize';
 import sequelize from '../config/database';
+import Product from './Product';
 
-class CartItem extends Model {
+interface CartItemAttributes {
+  id: number;
+  CartId: number;
+  ProductId: number;
+  quantity: number;
+  Product?: Product; 
+}
+
+class CartItem extends Model<CartItemAttributes> implements CartItemAttributes {
   public id!: number;
   public CartId!: number;
   public ProductId!: number;
   public quantity!: number;
+  
+  // Optional association with Product
+  public Product?: Product;
 }
 
 CartItem.init(
@@ -26,14 +38,15 @@ CartItem.init(
     quantity: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: 1,
     },
   },
   {
     sequelize,
     modelName: 'CartItem',
-    timestamps: true,
   }
 );
+
+// Setup association with Product
+CartItem.belongsTo(Product, { foreignKey: 'ProductId' });
 
 export default CartItem;
