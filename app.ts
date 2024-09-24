@@ -3,12 +3,9 @@ import dotenv from 'dotenv';
 import authRoutes from './routes/authRoutes';
 import cartRoutes from './routes/cartRoutes';
 import orderRoutes from './routes/orderRoutes';
+import analysisRoutes from './routes/analysisRoutes';
 import { syncDatabase } from './models';
-
-
 dotenv.config();
-
-
 const app: Application = express();
 
 
@@ -18,6 +15,7 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/cart',  cartRoutes);  
 app.use('/api/orders',orderRoutes);  
+app.use('/api/analysis', analysisRoutes);
 
 
 app.get('/', (req: Request, res: Response) => {
