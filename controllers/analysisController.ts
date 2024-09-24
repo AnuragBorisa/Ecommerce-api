@@ -1,4 +1,4 @@
-// controllers/analysisController.ts
+
 import { Request, Response } from 'express';
 import  sequelize  from '../config/database';
 
