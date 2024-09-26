@@ -79,7 +79,7 @@ The database schema is designed to handle e-commerce functionalities efficiently
     }
     ```
 - **Response**: Status 201, `{ message: "User registered successfully" }`  
-  ![Signup Api](./screenshots/ecommerce-siginUp.png)
+  ![Signup API](./screenshots/ecommerce-siginUp.png)
 
 #### Login
 - **Method**: POST  
@@ -161,15 +161,15 @@ The queries used in this project were optimized to handle large data sets effici
 ```bash
 git clone https://github.com/AnuragBorisa/Ecommerce-api
 cd ecommerce-backend
-Step 2: Install Dependencies
-bash
-Copy code
+```
+### Step 2: Install Dependencies
+```bash
 npm install
-Step 3: Set Up PostgreSQL Database
+```
+### Step 3: Set Up PostgreSQL Database
+```bash 
 Create a PostgreSQL database.
 Update the .env file with your database credentials:
-makefile
-Copy code
 DB_NAME=ecommerce_db
 DB_USER=your_db_user
 DB_PASSWORD=your_db_password
@@ -177,23 +177,24 @@ DB_HOST=localhost
 DB_PORT=5432
 JWT_SECRET=your_jwt_secret
 PORT=8080
-Step 4: Run Migrations
-bash
-Copy code
+```
+### Step 4: Run Migrations
+```bash 
 npx sequelize-cli db:migrate
-Step 5: Run the Server
-bash
-Copy code
-npm start
+```
+### Step 5: npm start
+```bash 
 The server will start at http://localhost:8080.
-Testing
+```
+### Testing 
 To test the APIs, you can use Postman or cURL:
 
 Signup & Login: Register a user and log in to get a JWT token.
 Add Products to Cart: Use the Add to Cart API with the JWT token.
 Place Orders: Place orders for the products in the cart.
 Analytics & Reporting: Test the analytics endpoints to fetch reports.
-Conclusion
+
+### Conclusion
 This E-commerce backend system is designed with scalability and performance in mind. The API layer offers essential functionalities for managing users, products, carts, and orders while also providing detailed reporting capabilities for user and product analysis. The database schema, queries, and optimizations ensure that the system can handle large data volumes efficiently.
 
-Thank you for reviewing the project! If you have any questions or feedback, please feel free to reach out.
+Thank you for reviewing the project! If you have any questions or feedback, please feel free to reach out. 
