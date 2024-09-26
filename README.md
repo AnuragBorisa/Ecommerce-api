@@ -38,39 +38,35 @@ Database Schema
 The database schema is designed to handle e-commerce functionalities efficiently:
 
 Users Table:
-![Users Table](./screenshots/usersTablecrop.png)
+
 Stores user information (e.g., name, email, password).
 
 Products Table:
-![Products Table](./screenshots/ProductsTablecrop.png) 
+
 Stores product information (e.g., name, price, stock).
 
 Carts and CartItems:
-![Carts Table](./screenshots/CartsTablecrop.png)
-![CartItem Table](./screenshots/CartItemTablecrop.png)
+
+
 Manages user carts, products in carts, and their quantities.
 
 Orders and OrderItems:
-![Order Table](./screenshots/OrdersTablecrop.png)
-![OrderItem Table](./screenshots/OrderItemTablecrop.png) 
+
+
 Tracks user orders, products in orders, and their quantities and prices.
 
 API Endpoints
 Authentication APIs
 Signup
-
 Method: POST
 URL: /api/auth/signup
 Body: { "name": "John Doe", "email": "john@example.com", "password": "password" }
 Response: Status 201, { message: "User registered successfully" }
-![Signup Api](./screenshots/ecommerce-siginUp.png)
 Login
-
 Method: POST
 URL: /api/auth/login
 Body: { "email": "john@example.com", "password": "password" }
 Response: Status 200, { token: "JWT_TOKEN" }
-![Login API](./screenshots/ecommerce-login.png)
 Cart Management APIs
 Add to Cart
 Method: POST
@@ -78,30 +74,25 @@ URL: /api/cart/add
 Headers: Authorization: Bearer <token>
 Body: { "productId": 1, "quantity": 2 }
 Response: Status 201, { message: "Product added to cart" }
-![Add To Cart API](./screenshots/addtocartApi.png)
 Order Management APIs
 Checkout and Place Order in Single Transaction
-
 Method: POST
 URL: /api/orders
 Headers: Authorization: Bearer <token>
 Body: { "cartId": 1 }
 Response: Status 201, { message: "Order placed successfully" }
-![Place Order And Checkout API](./screenshots/checkout-Api.png)
 Get Orders
-
 Method: GET
 URL: /api/orders
 Headers: Authorization: Bearer <token>
 Response: Status 200, returns user order history.
-![Get Orders API](./screenshots/getOrders.png)
 Analytics & Reporting APIs
 User-Product Analysis
-
 Method: GET
 URL: /api/analysis/user-product
 Response: Returns each user's ordered products, their total quantity, and total value.
 Query:
+
 sql
 Copy code
 SELECT 
@@ -123,13 +114,12 @@ GROUP BY
     u.id, u.name, p.id, p.name
 ORDER BY 
     u.id, p.id;
-![Query1 result](./screenshots/Query1.png)
 Weekly Orders Analysis (Q1 2024)
-
 Method: GET
 URL: /api/analysis/weekly-orders
 Response: Returns weekly order statistics including total orders, products sold, and total sales.
 Query:
+
 sql
 Copy code
 SELECT 
@@ -148,13 +138,12 @@ GROUP BY
     week
 ORDER BY 
     week;
-![Query2 result](./screenshots/Query2.png) 
 Top Products (Products with >= 5 Orders)
-
 Method: GET
 URL: /api/analysis/top-products
 Response: Returns a list of products that were ordered 5 or more times.
 Query:
+
 sql
 Copy code
 SELECT 
@@ -172,7 +161,6 @@ HAVING
     COUNT(o.id) >= 5
 ORDER BY 
     total_orders DESC;
-![Query3 result](./screenshots/Query.png)   
 Query Performance
 The queries used in this project were optimized to handle large data sets efficiently:
 
@@ -210,13 +198,3 @@ bash
 Copy code
 npm start
 The server will start at http://localhost:8080.
-Testing
-To test the APIs, you can use Postman or cURL
-Signup & Login: Register a user and log in to get a JWT token.
-Add Products to Cart: Use the Add to Cart API with the JWT token.
-Place Orders: Place orders for the products in the cart.
-Analytics & Reporting: Test the analytics endpoints to fetch reports.
-Conclusion
-This E-commerce backend system is designed with scalability and performance in mind. The API layer offers essential functionalities for managing users, products, carts, and orders while also providing detailed reporting capabilities for user and product analysis. The database schema, queries, and optimizations ensure that the system can handle large data volumes efficiently.
-
-Thank you for reviewing the project! If you have any questions or feedback, please feel free to reach out.
